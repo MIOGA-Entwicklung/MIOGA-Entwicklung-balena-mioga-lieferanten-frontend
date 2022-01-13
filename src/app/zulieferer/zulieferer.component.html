@@ -14,9 +14,9 @@
 
           <br>
           <div class="row">
-            <button class="btn btn-outline-dark"  (click)="switchToAll()"> Lieferanten</button>
+            <button class="btn btn-outline-dark" (click)="switchToAll()"> Lieferanten</button>
             <button class="btn btn-outline-info" style="margin-left: 1em;" (click)="switchToMioga()"> Mioga</button>
-            <button class="btn btn-outline-warning" style="margin-left: 1em;" (click)="switchToEmk()"> EMK </button>
+            <button class="btn btn-outline-warning" style="margin-left: 1em;" (click)="switchToEmk()"> EMK</button>
 
           </div>
 
@@ -140,6 +140,16 @@
             </div>
 
             <div class="form-group">
+              <label for="link">Link</label>
+              <input
+                placeholder="link <Optional>"
+                type="text"
+                id="link"
+                formControlName="link"
+                class="form-control">
+            </div>
+
+            <div class="form-group">
               <label for="description">Beschreibung</label>
               <input
                 placeholder="Beschreibung <Optional>"
@@ -148,6 +158,48 @@
                 formControlName="description"
                 class="form-control">
             </div>
+
+              <ng-container [formGroup]="ZuliefererUser">
+                <div class="form-group">
+                  <label for="username">Benuzername</label>
+                  <input
+                    placeholder="Benuzername <Optional>"
+                    type="text"
+                    id="username"
+                    formControlName="username"
+                    class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Passwort</label>
+                  <input
+                    placeholder="Passwort <Optional>"
+                    type="text"
+                    id="password"
+                    formControlName="password"
+                    class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    placeholder="Email <Optional>"
+                    type="text"
+                    id="email"
+                    formControlName="email"
+                    class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="CustomerNumber">Customer Number</label>
+                  <input
+                    placeholder="Kunden Nummer <Optional>"
+                    type="text"
+                    id="CustomerNumber"
+                    formControlName="CustomerNumber"
+                    class="form-control">
+                </div>
+
+
+              </ng-container>
 
             <ng-container formArrayName="contacts">
               <ng-container *ngFor="let contactForm of contacts.controls; let i = index">

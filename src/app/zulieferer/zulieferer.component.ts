@@ -3,7 +3,7 @@ import {Zulieferer} from "./zulieferer";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ZuliefererServices} from "./zulieferer.services";
 import {Contacts} from "../contact/contact";
-import {FormArray, FormBuilder, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -35,8 +35,16 @@ export class ZuliefererComponent implements OnInit {
 
   zuliefererForm = this.fromBuilder.group({
     'title': ['', Validators.required],
+    'link' :[''],
     'description': ['',],
     'belongsTo': ['MIOGA', Validators.required],
+
+    'ZuliefererUser' : this.fromBuilder.group({
+        'username': [''],
+        'password': [''],
+        'CustomerNumber' :[''],
+        'email': ['']
+      }),
     contacts: this.fromBuilder.array([])
   })
 
@@ -48,6 +56,10 @@ export class ZuliefererComponent implements OnInit {
 
   get contacts() {
     return this.zuliefererForm.controls["contacts"] as FormArray
+  }
+
+  get ZuliefererUser() {
+    return this.zuliefererForm.controls["ZuliefererUser"] as FormGroup
   }
 
 
@@ -76,6 +88,7 @@ export class ZuliefererComponent implements OnInit {
   }
 
   onAddzulieferer(): void {
+    console.log(JSON.stringify(this.zuliefererForm.value))
     this.zuliefererServices.createZulieferer(this.zuliefererForm.value).subscribe(
       (response: Zulieferer) => {
         console.log(response);
