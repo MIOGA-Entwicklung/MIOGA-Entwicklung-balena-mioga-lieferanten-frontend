@@ -20,8 +20,6 @@ export class ZuliefererComponent implements OnInit {
   emkZulieferer: Zulieferer[];
 
 
-
-
   zuliefercontactList: Contacts[] = [];
   deleteZulieferer: Zulieferer;
   showZuliefererContact: Zulieferer;
@@ -35,17 +33,16 @@ export class ZuliefererComponent implements OnInit {
 
   zuliefererForm = this.fromBuilder.group({
     'title': ['', Validators.required],
-    'link' :[''],
+    'link': [''],
     'description': ['',],
     'belongsTo': ['MIOGA', Validators.required],
-
-    'ZuliefererUser' : this.fromBuilder.group({
-        'username': [''],
-        'password': [''],
-        'CustomerNumber' :[''],
-        'email': ['']
-      }),
-    contacts: this.fromBuilder.array([])
+    contacts: this.fromBuilder.array([]),
+    'zuliefererUser': this.fromBuilder.group({
+      'customerNumber': [''],
+      'email': [''],
+      'username': [''],
+      'password': [''],
+    })
   })
 
 
@@ -58,8 +55,8 @@ export class ZuliefererComponent implements OnInit {
     return this.zuliefererForm.controls["contacts"] as FormArray
   }
 
-  get ZuliefererUser() {
-    return this.zuliefererForm.controls["ZuliefererUser"] as FormGroup
+  get zuliefererUser() {
+    return this.zuliefererForm.controls["zuliefererUser"] as FormGroup
   }
 
 
@@ -183,9 +180,11 @@ export class ZuliefererComponent implements OnInit {
   switchToMioga() {
     this.value = 2
   }
+
   switchToEmk() {
     this.value = 3
   }
+
   switchToAll() {
     this.value = 1
   }
