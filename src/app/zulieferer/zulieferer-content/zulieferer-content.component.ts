@@ -24,6 +24,9 @@ export class ZuliefererContentComponent implements OnInit {
   Contactdefaultvalue = 'Ms';
   closeResult = '';
 
+
+  zuliefererDescription : Zulieferer;
+
   constructor(private zuliefererService: ZuliefererServices, private parent: ZuliefererComponent, private modalService: NgbModal) {
   }
 
@@ -81,4 +84,12 @@ export class ZuliefererContentComponent implements OnInit {
   }
 
 
+  onShowDescription(showDescriptionsModal: any, zulieferer) {
+    this.zuliefererDescription = zulieferer;
+    this.modalService.open(showDescriptionsModal, {ariaLabelledBy: 'showDescriptionHeader'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 }

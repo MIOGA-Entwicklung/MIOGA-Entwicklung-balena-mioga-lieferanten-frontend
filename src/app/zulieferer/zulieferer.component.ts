@@ -20,8 +20,6 @@ export class ZuliefererComponent implements OnInit {
   emkZulieferer: Zulieferer[];
 
 
-
-
   zuliefercontactList: Contacts[] = [];
   deleteZulieferer: Zulieferer;
   showZuliefererContact: Zulieferer;
@@ -37,6 +35,10 @@ export class ZuliefererComponent implements OnInit {
     'title': ['', Validators.required],
     'description': ['',],
     'belongsTo': ['MIOGA', Validators.required],
+    'link': [''],
+    'username': [''],
+    'password': [''],
+    'key': [''],
     contacts: this.fromBuilder.array([])
   })
 
@@ -170,9 +172,11 @@ export class ZuliefererComponent implements OnInit {
   switchToMioga() {
     this.value = 2
   }
+
   switchToEmk() {
     this.value = 3
   }
+
   switchToAll() {
     this.value = 1
   }

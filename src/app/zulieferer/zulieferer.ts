@@ -10,6 +10,10 @@ export interface Zulieferer {
   updatedAt: string;
   successAt: string;
   timetableId: number;
+  link:string;
+  username: string;
+  password: string;
+  key: string;
   contacts : Contacts[]
 }
 
