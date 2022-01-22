@@ -3,7 +3,7 @@ ARG API_BASEURL="http://db907f3a697198fae10dc93ba55e3d75.balena-devices.com:8080
 
 #Note after Building the first Step the Container container will be Deleted
 # Nginx will be the last Container with only dist/Liferanten File
-FROM node:latest as build-step
+FROM node:16 as build-step
 
 ENV APIBASEURL=${API_BASEURL}
 
@@ -13,7 +13,7 @@ WORKDIR /home/node/app
 
 COPY --chown=root:root ./package.json ./
 
-RUN npm install
+RUN npm install -g npm@8.3.2
 
 COPY --chown=root:root ./ ./
 
