@@ -61,6 +61,27 @@
             ]
           },
           "configurations": {
+            "balenafrontend": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.balenafrontend.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "production": {
               "budgets": [
                 {
@@ -101,6 +122,9 @@
             },
             "development": {
               "browserTarget": "Lieferanten:build:development"
+            },
+            "balenafrontend": {
+              "browserTarget": "Lieferanten:build:balenafrontend"
             }
           },
           "defaultConfiguration": "development"

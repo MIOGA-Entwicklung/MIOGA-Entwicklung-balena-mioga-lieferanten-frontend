@@ -13,17 +13,18 @@ WORKDIR /home/node/app
 
 COPY --chown=root:root ./package.json ./
 
-RUN npm install -g npm@8.3.2
+RUN npm install
+
 
 COPY --chown=root:root ./ ./
 
-COPY . /app
+COPY --chown=root:root . /app
 
-RUN npm run build
+RUN  npm run build --env=balenafrontend
 
 
 #final stage
-FROM nginx:alpine
+FROM nginx:latest
 EXPOSE 80
 COPY --from=build-step /home/node/app/dist/Lieferanten/ /usr/share/nginx/html
 
