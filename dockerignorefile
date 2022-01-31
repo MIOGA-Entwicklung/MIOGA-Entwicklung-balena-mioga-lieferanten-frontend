@@ -1,7 +1,9 @@
 .git
 .firebase
 .editorconfig
-/node_modules
+node_modules
+package-lock.json
+dist
 /e2e
 /docs
 .gitignore

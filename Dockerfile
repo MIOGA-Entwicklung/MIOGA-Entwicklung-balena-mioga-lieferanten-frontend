@@ -5,6 +5,7 @@ ARG API_BASEURL="http://db907f3a697198fae10dc93ba55e3d75.balena-devices.com:8080
 # Nginx will be the last Container with only dist/Liferanten File
 FROM node:16 as build-step
 
+ENV npm_config_user=root
 ENV APIBASEURL=${API_BASEURL}
 
 USER root
@@ -18,14 +19,11 @@ RUN npm install
 
 COPY --chown=root:root ./ ./
 
-RUN  npm run build --env=balenafrontend
+
+RUN  npm run build
 
 
 #final stage
 FROM nginx:latest
 EXPOSE 80
 COPY --from=build-step /home/node/app/dist/Lieferanten/ /usr/share/nginx/html
-
-
-
-
