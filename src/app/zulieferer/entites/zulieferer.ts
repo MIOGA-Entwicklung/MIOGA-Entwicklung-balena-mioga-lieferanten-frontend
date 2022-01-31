@@ -1,4 +1,5 @@
-import {Contacts} from "../contact/contact";
+import {Contacts} from "../../contact/contact";
+import {Connection} from "./Connection";
 
 
 export interface Zulieferer {
@@ -15,5 +16,6 @@ export interface Zulieferer {
   password: string;
   key: string;
   contacts : Contacts[]
+  connection: Connection[]
 }
 

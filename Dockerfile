@@ -18,8 +18,6 @@ RUN npm install
 
 COPY --chown=root:root ./ ./
 
-COPY --chown=root:root . /app
-
 RUN  npm run build --env=balenafrontend
 
 

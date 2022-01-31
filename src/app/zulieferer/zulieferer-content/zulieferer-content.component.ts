@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ZuliefererServices} from "../zulieferer.services";
 import {ZuliefererComponent} from "../zulieferer.component";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {Zulieferer} from "../zulieferer";
+import {Zulieferer} from "../entites/zulieferer";
 import {Contacts} from "../../contact/contact";
 
 @Component({

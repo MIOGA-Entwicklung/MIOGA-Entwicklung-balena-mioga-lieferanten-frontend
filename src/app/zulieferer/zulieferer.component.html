@@ -51,7 +51,7 @@
     <section class="content" *ngSwitchCase="1">
       <div class="container-fluid">
         <app-zulieferer-content [ZuliefererList]="zulieferer"
-                                [zuliefercontactList]="zuliefercontactList">
+                                [zuliefercontactList]="zulieferercontactList">
         </app-zulieferer-content>
       </div>
     </section>
@@ -59,7 +59,7 @@
     <section class="content" *ngSwitchCase="2">
       <div class="container-fluid">
         <app-zulieferer-content [ZuliefererList]="miogazulieferer"
-                                [zuliefercontactList]="zuliefercontactList">
+                                [zuliefercontactList]="zulieferercontactList">
         </app-zulieferer-content>
       </div>
     </section>
@@ -67,7 +67,7 @@
     <section class="content" *ngSwitchCase="'3'">
       <div class="container-fluid">
         <app-zulieferer-content [ZuliefererList]="emkZulieferer"
-                                [zuliefercontactList]="zuliefercontactList">
+                                [zuliefercontactList]="zulieferercontactList">
         </app-zulieferer-content>
       </div>
     </section>
@@ -109,6 +109,21 @@
                 <h4 class="modal-title">Zulieferer Daten</h4>
               </div>
             </div>
+
+            <br>
+            <div class="row">
+
+              <div class="col">
+
+                <button class="btn btn-success" type="button" (click)="AddConnection()"> Add Connection</button>
+
+                <button class="btn btn-success " style="margin-left: 10px;" type="button" (click)="AddContact()"> Add Contact</button>
+
+              </div>
+            </div>
+
+
+
           </div>
 
 
@@ -177,6 +192,50 @@
                 formControlName="key"
                 class="form-control">
             </div>
+
+
+            <ng-container formArrayName="connection">
+              <ng-container *ngFor="let connectionFrom of connection.controls; let i = index">
+
+                <div class="row">
+                  <div class="col">
+                    <h4 class="modal-title">Connection Configuration</h4>
+                  </div>
+                </div>
+                <div class="modal-body">
+                  <div [formGroup]="connectionFrom">
+
+                    <!-- url -->
+                    <div class="form-group">
+                      <label>URL</label>
+                      <input formControlName="url" type="text" class="form-control"
+                             placeholder="URL <Optional>">
+                    </div>
+
+                    <!-- target -->
+                    <div class="form-group">
+                      <label>Target </label>
+                      <input formControlName="target" type="text" class="form-control"
+                             placeholder="Target <Optional>">
+                    </div>
+
+                    <!-- Type -->
+                    <div class="form-group">
+                      <label> Type </label>
+                      <input formControlName="type" name="email" type="email" class="form-control"
+                             placeholder="type">
+                    </div>
+
+                    <button class="btn btn-danger" type="button" (click)="deleteConnection(i)"> Connection löschen
+                    </button>
+                  </div>
+                </div>
+                <hr>
+              </ng-container>
+            </ng-container>
+
+
+
 
             <ng-container formArrayName="contacts">
               <ng-container *ngFor="let contactForm of contacts.controls; let i = index">
@@ -262,7 +321,7 @@
                 <hr>
               </ng-container>
             </ng-container>
-            <button class="btn btn-success" type="button" (click)="AddContact()"> Add Contact</button>
+
           </div>
         </div>
       </form>

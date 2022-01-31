@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Zulieferer} from "./zulieferer";
+import {Zulieferer} from "./entites/zulieferer";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ZuliefererServices} from "./zulieferer.services";
 import {Contacts} from "../contact/contact";
 import {FormArray, FormBuilder, Validators} from "@angular/forms";
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Connection} from "./entites/Connection";
 
 
 @Component({
@@ -20,7 +21,10 @@ export class ZuliefererComponent implements OnInit {
   emkZulieferer: Zulieferer[];
 
 
-  zuliefercontactList: Contacts[] = [];
+  zulieferercontactList: Contacts[] = [];
+  zuliefererConnectionList: Connection[] = [];
+
+
   deleteZulieferer: Zulieferer;
   showZuliefererContact: Zulieferer;
 
@@ -31,7 +35,7 @@ export class ZuliefererComponent implements OnInit {
 
   value = 3;
 
-  zuliefererForm = this.fromBuilder.group({
+  zuliefererForm = this.formBuilder.group({
     'title': ['', Validators.required],
     'description': ['',],
     'belongsTo': ['MIOGA', Validators.required],
@@ -39,11 +43,12 @@ export class ZuliefererComponent implements OnInit {
     'username': [''],
     'password': [''],
     'key': [''],
-    contacts: this.fromBuilder.array([])
+    contacts: this.formBuilder.array([]),
+    connection:this.formBuilder.array([])
   })
 
 
-  constructor(private zuliefererServices: ZuliefererServices, private fromBuilder: FormBuilder, private modalService: NgbModal
+  constructor(private zuliefererServices: ZuliefererServices, private formBuilder: FormBuilder, private modalService: NgbModal
   ) {
   }
 
@@ -52,13 +57,12 @@ export class ZuliefererComponent implements OnInit {
     return this.zuliefererForm.controls["contacts"] as FormArray
   }
 
-
   get contactLenth() {
     return this.contacts.length
   }
 
   AddContact() {
-    const contactForm = this.fromBuilder.group({
+    const contactForm = this.formBuilder.group({
       'title': ['Ms', Validators.required],
       'description': [''],
       'company': ['', Validators.required],
@@ -76,6 +80,37 @@ export class ZuliefererComponent implements OnInit {
   deleteContact(ContactFromIndex: number) {
     this.contacts.removeAt(ContactFromIndex)
   }
+
+
+
+  get connection() {
+    return this.zuliefererForm.controls["connection"] as FormArray
+  }
+
+  get connectionLenth() {
+    return this.connection.length
+  }
+
+  AddConnection() {
+    const connectionForm = this.formBuilder.group({
+      'url': [''],
+      'target': [''],
+      'type': [''],
+    })
+    this.connection.push(connectionForm);
+  }
+
+  deleteConnection(connectionFromIndex: number) {
+    this.connection.removeAt(connectionFromIndex)
+  }
+
+
+
+
+
+
+
+
 
   onAddzulieferer(): void {
     this.zuliefererServices.createZulieferer(this.zuliefererForm.value).subscribe(
@@ -122,7 +157,7 @@ export class ZuliefererComponent implements OnInit {
     console.log("Zulieferer ID " + zulieferer.id)
 
     this.zuliefererServices.getZuliefererContactsById(zulieferer.id).subscribe((receivedData) => (
-      this.zuliefercontactList = receivedData)
+      this.zulieferercontactList = receivedData)
     );
   }
 
@@ -180,4 +215,5 @@ export class ZuliefererComponent implements OnInit {
   switchToAll() {
     this.value = 1
   }
+
 }
