@@ -63,7 +63,7 @@ export class ZuliefererComponent implements OnInit {
 
   AddContact() {
     const contactForm = this.formBuilder.group({
-      'title': ['Ms', Validators.required],
+      'title': ['Frau', Validators.required],
       'description': [''],
       'company': ['', Validators.required],
       'vorname': [''],

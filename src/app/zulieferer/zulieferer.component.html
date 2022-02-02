@@ -46,33 +46,13 @@
   <!-- / Page content TableData -->
 
 
-  <section [ngSwitch]="value">
-
-    <section class="content" *ngSwitchCase="1">
+    <section class="content">
       <div class="container-fluid">
         <app-zulieferer-content [ZuliefererList]="zulieferer"
                                 [zuliefercontactList]="zulieferercontactList">
         </app-zulieferer-content>
       </div>
     </section>
-
-    <section class="content" *ngSwitchCase="2">
-      <div class="container-fluid">
-        <app-zulieferer-content [ZuliefererList]="miogazulieferer"
-                                [zuliefercontactList]="zulieferercontactList">
-        </app-zulieferer-content>
-      </div>
-    </section>
-
-    <section class="content" *ngSwitchCase="'3'">
-      <div class="container-fluid">
-        <app-zulieferer-content [ZuliefererList]="emkZulieferer"
-                                [zuliefercontactList]="zulieferercontactList">
-        </app-zulieferer-content>
-      </div>
-    </section>
-
-  </section>
 
 
   <!-- Notification If No Zulieferer -->
@@ -152,16 +132,6 @@
                 <option class="form-control">MIOGA</option>
                 <option class="form-control"> EMK</option>
               </select>
-            </div>
-
-            <div class="form-group">
-              <label for="link">Link</label>
-              <input
-                placeholder="link <Optional>"
-                type="text"
-                id="link"
-                formControlName="link"
-                class="form-control">
             </div>
 
             <div class="form-group">
@@ -253,8 +223,8 @@
                       <select name="title"
                               formControlName="title"
                               class="form-control">
-                        <option class="form-control">Ms</option>
-                        <option class="form-control">Mr</option>
+                        <option class="form-control">Frau</option>
+                        <option class="form-control">Herr</option>
                       </select>
                     </div>
 
