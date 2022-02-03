@@ -39,7 +39,6 @@ export class ZuliefererComponent implements OnInit {
     'title': ['', Validators.required],
     'description': ['',],
     'belongsTo': ['MIOGA', Validators.required],
-    'link': [''],
     'username': [''],
     'password': [''],
     'key': [''],

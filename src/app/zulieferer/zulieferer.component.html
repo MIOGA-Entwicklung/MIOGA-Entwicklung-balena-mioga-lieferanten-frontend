@@ -14,9 +14,9 @@
 
           <br>
           <div class="row">
-            <button class="btn btn-outline-dark"  (click)="switchToAll()"> Lieferanten</button>
+            <button class="btn btn-outline-dark" (click)="switchToAll()"> Lieferanten</button>
             <button class="btn btn-outline-info" style="margin-left: 1em;" (click)="switchToMioga()"> Mioga</button>
-            <button class="btn btn-outline-warning" style="margin-left: 1em;" (click)="switchToEmk()"> EMK </button>
+            <button class="btn btn-outline-warning" style="margin-left: 1em;" (click)="switchToEmk()"> EMK</button>
 
           </div>
 
@@ -42,17 +42,14 @@
 
 
   <!--  Page All content TableData -->
-
+  <section class="content">
+    <div class="container-fluid">
+      <app-zulieferer-content [ZuliefererList]="zulieferer"
+                              [zuliefercontactList]="zulieferercontactList">
+      </app-zulieferer-content>
+    </div>
+  </section>
   <!-- / Page content TableData -->
-
-
-    <section class="content">
-      <div class="container-fluid">
-        <app-zulieferer-content [ZuliefererList]="zulieferer"
-                                [zuliefercontactList]="zulieferercontactList">
-        </app-zulieferer-content>
-      </div>
-    </section>
 
 
   <!-- Notification If No Zulieferer -->
@@ -97,11 +94,12 @@
 
                 <button class="btn btn-success" type="button" (click)="AddConnection()"> Add Connection</button>
 
-                <button class="btn btn-success " style="margin-left: 10px;" type="button" (click)="AddContact()"> Add Contact</button>
+                <button class="btn btn-success " style="margin-left: 10px;" type="button" (click)="AddContact()"> Add
+                  Contact
+                </button>
 
               </div>
             </div>
-
 
 
           </div>
@@ -192,8 +190,7 @@
                     <!-- Type -->
                     <div class="form-group">
                       <label> Type </label>
-                      <input formControlName="type" name="email" type="email" class="form-control"
-                             placeholder="type">
+                      <input formControlName="type" name="type" type="text" class="form-control" placeholder="type">
                     </div>
 
                     <button class="btn btn-danger" type="button" (click)="deleteConnection(i)"> Connection löschen
@@ -203,8 +200,6 @@
                 <hr>
               </ng-container>
             </ng-container>
-
-
 
 
             <ng-container formArrayName="contacts">
@@ -245,8 +240,7 @@
                     <!-- Email -->
                     <div class="form-group">
                       <label> Email * </label>
-                      <input formControlName="email" name="email" type="email" class="form-control"
-                             placeholder="Email">
+                      <input formControlName="email" name="email"  class="form-control" placeholder="Email" ngModel email>
                     </div>
 
                     <!-- Company -->
@@ -259,15 +253,13 @@
                     <!-- Mobile -->
                     <div class="form-group">
                       <label> Mobile</label>
-                      <input formControlName="mobile" name="mobile" type="text" class="form-control"
-                             placeholder="Mobile <Optional>">
+                      <input formControlName="mobile" name="mobile" type="text" class="form-control" placeholder="Mobile <Optional>">
                     </div>
 
                     <!-- Telephone -->
                     <div class="form-group">
                       <label>Telephone</label>
-                      <input formControlName="telefone" name="telefone" type="text" class="form-control"
-                             placeholder="Telephone <Optional>">
+                      <input formControlName="telefone" name="telefone" type="text" class="form-control" placeholder="Telephone <Optional>">
                     </div>
 
                     <!-- Description -->
