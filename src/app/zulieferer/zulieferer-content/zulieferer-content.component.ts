@@ -21,6 +21,7 @@ export class ZuliefererContentComponent implements OnInit {
   public deleteZulieferer: Zulieferer;
 
   public editZulieferer: Zulieferer;
+
   Contactdefaultvalue = 'Ms';
   closeResult = '';
 
@@ -50,6 +51,7 @@ export class ZuliefererContentComponent implements OnInit {
 
 
   onSubmitUpdateZulieferer(updateZulieferer: Zulieferer) {
+    console.log(updateZulieferer)
     this.parent.onUpdateZulieferer(updateZulieferer)
   }
 

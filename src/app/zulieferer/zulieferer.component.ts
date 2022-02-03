@@ -104,13 +104,6 @@ export class ZuliefererComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
   onAddzulieferer(): void {
     this.zuliefererServices.createZulieferer(this.zuliefererForm.value).subscribe(
       (response: Zulieferer) => {

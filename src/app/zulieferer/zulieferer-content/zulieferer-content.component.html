@@ -43,8 +43,8 @@
 
                   <tbody>
                   <tr>
-                    <td> <b>{{zulieferer.id}}</b> </td>
-                    <td><b>{{zulieferer.title}}</b> </td>
+                    <td><b>{{zulieferer.id}}</b></td>
+                    <td><b>{{zulieferer.title}}</b></td>
                     <td>
                       <button id="showDescription" class="btn btn-info"
                               (click)="onShowDescription(showDescriptionsModal,zulieferer)">
@@ -106,28 +106,52 @@
         <!-- title -->
         <div class="form-group">
           <label for="titleEdit">Title</label>
-          <input type="text" ngModel="{{editZulieferer?.title}}" name="title" class="form-control"
-                 id="titleEdit" placeholder="title">
+          <input type="text" ngModel="{{editZulieferer?.title}}" name="title" class="form-control" id="titleEdit"
+                 placeholder="title">
         </div>
+
+        <!-- Belongs To -->
+        <div class="form-group">
+          <label for="belongsToEdit"> Gehört Zu * </label>
+          <select class="form-control"
+                  ngModel="{{editZulieferer?.belongsTo}}"
+                  id="belongsToEdit" name="belongsTo">
+            <option class="form-control">MIOGA</option>
+            <option class="form-control">EMK</option>
+          </select>
+        </div>
+
+        <!--Username-->
+        <div class="form-group">
+          <label for="usernameEdit">Kundennummer / username</label>
+          <input ngModel="{{editZulieferer?.username}}" name="username" id="usernameEdit" type="text"
+                 class="form-control" placeholder="Kunndennummer">
+        </div>
+
+        <!--Password-->
+        <div class="form-group">
+          <label for="passwortEdit">Passwort</label>
+          <input ngModel="{{editZulieferer?.password}}" name="password" id="passwortEdit" type="text"
+                 class="form-control" placeholder="Passwort">
+        </div>
+
+
+        <!--Key-->
+        <div class="form-group">
+          <label for="keyEdit">Schlüssel</label>
+          <input ngModel="{{editZulieferer?.key}}" name="key" id="keyEdit" type="text"
+                 class="form-control" placeholder="Schlüssel">
+        </div>
+
 
         <!--description-->
         <div class="form-group">
-          <label for="descriptionEdit">Description</label>
+          <label for="descriptionEdit">Beschreibung</label>
           <input ngModel="{{editZulieferer?.description}}" name="description" id="descriptionEdit"
                  type="text"
                  class="form-control" placeholder="description">
         </div>
 
-        <!-- belongs TO -->
-        <div class="form-group">
-          <label for="belongsToEdit">BelongsTO *</label>
-          <select name="belongsTo" ngModel="{{editZulieferer?.belongsTo}}"
-                  class="custom-select form-control-border"
-                  id="belongsToEdit" required="required">
-            <option>MIOGA</option>
-            <option>EMK</option>
-          </select>
-        </div>
         <!-- uuid -->
 
         <input type="hidden" ngModel="{{editZulieferer?.uuid}}" name="uuid" id="uuidEdit"
@@ -139,13 +163,13 @@
                  class="form-control">
         </div>
 
+
         <!-- timetableId -->
         <div class="form-group">
-          <label for="timetableIdEdit">Time Table ID</label>
           <input ngModel="{{editZulieferer?.timetableId}}" name="timetableId" id="timetableIdEdit"
                  type="text"
                  class="form-control"
-                 placeholder="Time Table ID">
+                 placeholder="Time Table ID" hidden>
         </div>
 
       </form>

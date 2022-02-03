@@ -29,6 +29,7 @@ export class ContactsContentComponent implements OnInit {
   }
 
   onSubmitUpdateContact(updateContacted: Contacts) {
+    console.log(updateContacted)
     this.parent.onUpdateContact(updateContacted)
   }
 
