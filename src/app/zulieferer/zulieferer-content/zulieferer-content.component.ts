@@ -4,6 +4,7 @@ import {ZuliefererComponent} from "../zulieferer.component";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Zulieferer} from "../entites/zulieferer";
 import {Contacts} from "../../contact/contact";
+import {Connection} from "../entites/Connection";
 
 @Component({
   selector: 'app-zulieferer-content',
@@ -21,6 +22,10 @@ export class ZuliefererContentComponent implements OnInit {
   public deleteZulieferer: Zulieferer;
 
   public editZulieferer: Zulieferer;
+
+  public connectionList : Connection[];
+
+  public editConnection : Connection;
 
   Contactdefaultvalue = 'Ms';
   closeResult = '';
@@ -68,6 +73,9 @@ export class ZuliefererContentComponent implements OnInit {
   //open the Form
   openEditForm(zuliefererEditForm: any, CurrentZulieferer: any) {
     this.editZulieferer = CurrentZulieferer;
+    this.connectionList = this.editZulieferer.connection;
+    console.log(this.connectionList)
+
     this.modalService.open(zuliefererEditForm, {ariaLabelledBy: 'editModelForm'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

@@ -90,6 +90,7 @@
 <!-- Show Edit Zulieferer Modal -->
 <section>
   <ng-template #zuliefererEditForm let-modal>
+
     <div class="modal-header">
       <h4 class="modal-title" id="editModelForm">Edit Form</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -171,6 +172,44 @@
                  class="form-control"
                  placeholder="Time Table ID" hidden>
         </div>
+
+
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Connection</h4>
+
+          <div *ngFor=" let connection of connectionList">
+
+            <!-- title -->
+
+
+            <!-- URL -->
+            <div class="form-group">
+              <input type="text" ngModel="{{connection?.id}}" name="title" class="form-control"  hidden>
+            </div>
+
+            <!-- URL -->
+            <div class="form-group">
+              <label for="urlEdit">URL</label>
+              <input type="text" ngModel="{{connection?.url}}" name="title" class="form-control" id="urlEdit"
+                     placeholder="title">
+            </div>
+            <!-- URL -->
+            <div class="form-group">
+              <label for="EditTarger">Target</label>
+              <input type="text" ngModel="{{connection?.target}}" name="title" class="form-control" id="EditTarger"
+                     placeholder="title">
+            </div>
+
+            <!-- type -->
+            <div class="form-group">
+              <label for="EditType">Target</label>
+              <input type="text" ngModel="{{connection?.type}}" name="title" class="form-control" id="EditType"
+                     placeholder="title">
+            </div>
+
+          </div>
+        </div>
+
 
       </form>
     </div>
